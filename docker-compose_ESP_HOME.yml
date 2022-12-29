@@ -1,0 +1,15 @@
+version: '3'
+services:
+  esphome:
+    container_name: esphome
+    image: esphome/esphome
+    restart: unless-stopped 
+    environment:
+      - TZ=Europe/Lisbon
+    ports:
+      - 6052:6052 
+    volumes:
+      - ~/docker-config/esphome/config:/config
+      - /etc/localtime:/etc/localtime:ro
+    privileged: true
+#    network_mode: host
