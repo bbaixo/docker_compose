@@ -1,0 +1,21 @@
+# dashy
+
+---
+version: "3.8"
+services:
+  dashy:
+    # To build from source, replace 'image: lissy93/dashy' with 'build: .'
+    # build: .
+    image: lissy93/dashy:latest
+    container_name: dashy
+    # Pass in your config file below, by specifying the path on your host machine
+    volumes:
+      - ~/docker-config/dashy/conf.yml:/app/public/conf.yml
+    ports:
+      - 4000:80
+    # Set any environmental variables
+    environment:
+      - NODE_ENV=production
+      - TZ=Europe/Lisbon
+    # Specify restart policy
+    restart: unless-stopped

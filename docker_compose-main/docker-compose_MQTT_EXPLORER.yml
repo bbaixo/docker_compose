@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  mqtt-explorer:
+    image: mqtt-explorer:latest
+    container_name: mqtt-explorer
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Lisbon
+    ports:
+      - 4010:4000
+    volumes:
+      - ~/docker-config/mqttexplorer/data:/mqtt-explorer/config
+    labels:
+      - com.centurylinklabs.watchtower.enable=false      
+
+

@@ -1,0 +1,20 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    container_name: mariadb
+    image: mariadb:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_PASSWORD=userpass
+      - MYSQL_USER=user
+      - MYSQL_DATABASE=database
+      - TZ=Europe/Lisbon
+    ports:
+      - 3306:3306 
+    volumes:
+      - ~/docker-config/mariadb/data:/var/lib/mysql
+
