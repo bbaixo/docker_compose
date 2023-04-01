@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=Europe/Lisbon
       - 'EMQX_NAME=emqx'
-      - 'EMQX_HOST=emqx.fhferreira.com'
+      - 'EMQX_HOST=emqx.server.com'
     volumes:
       #- vol-emqx-data:/opt/emqx/data
       #- vol-emqx-etc:/opt/emqx/etc
