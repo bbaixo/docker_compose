@@ -1,0 +1,31 @@
+services:
+  emqx:
+    image: emqx/emqx:latest
+    #restart: always
+    #restart: unless-stopped
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Lisbon
+      - 'EMQX_NAME=emqx'
+      - 'EMQX_HOST=emqx.fhferreira.com'
+    volumes:
+      #- vol-emqx-data:/opt/emqx/data
+      #- vol-emqx-etc:/opt/emqx/etc
+      #- vol-emqx-log:/opt/emqx/log
+      - ~/docker-config/emqx/foo-emqx-data/_data:/opt/emqx/data
+      - ~/docker-config/emqx/foo-emqx-etc/_data:/opt/emqx/etc
+      - ~/docker-config/emqx/foo-emqx-log/_data:/opt/emqx/log
+    ports:
+      - 18083:18083
+      - 1883:1883
+    #user: 0000:0000
+
+volumes:
+  vol-emqx-data:
+    name: foo-emqx-data
+  vol-emqx-etc:
+    name: foo-emqx-etc
+  vol-emqx-log:
+    name: foo-emqx-log
